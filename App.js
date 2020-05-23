@@ -1,19 +1,48 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  Button,
+  TouchableHighlight,
+  TouchableOpacity,
+  TouchableNativeFeedback,
+  TouchableWithoutFeedback,
+  Slider,
+  Image
+} from 'react-native';
+import { FontAwesome } from "@expo/vector-icons";
+import { createStore } from 'redux';
+import { Provider } from 'react-redux'
+import reducers from './reducers'
+import AddEntry from './components/AddEntry'
+import History from './components/History'
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
-  );
+export default class App extends React.Component {
+  render() {
+    return (
+      <Provider store={createStore(reducers)}>
+        <View style={{flex:1}} >
+          <Text>Test Aewa</Text>
+          {/* <AddEntry /> */}
+          <History />
+        </View>
+      </Provider>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+
+    width: '100%',
+    backgroundColor: '#aff',
     alignItems: 'center',
     justifyContent: 'center',
   },
+
+  slider: {
+    width: '100%'
+  }
 });
